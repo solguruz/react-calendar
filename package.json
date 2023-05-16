@@ -1,0 +1,43 @@
+{
+  "name": "calender-components",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "prepare": "husky install",
+    "export": "npm run build && next export -o _static"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.7",
+    "next": "13.3.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.16.1",
+    "@types/react": "18.2.0",
+    "@types/react-dom": "18.2.1",
+    "@typescript-eslint/eslint-plugin": "^5.42.1",
+    "@typescript-eslint/parser": "^5.42.1",
+    "autoprefixer": "^10.4.14",
+    "eslint": "8.39.0",
+    "eslint-config-next": "13.3.1",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.2.2",
+    "postcss": "^8.4.23",
+    "prettier": "^2.8.1",
+    "tailwindcss": "^3.3.2",
+    "typescript": "5.0.4"
+  },
+  "lint-staged": {
+    "*.ts,tsx": [
+      "eslint --fix"
+    ],
+    "*.{ts,tsx,js,css}": [
+      "prettier --write"
+    ]
+  }
+}
