@@ -91,7 +91,7 @@ const Calender = ({ name, type, data }: Props) => {
     <div className="p-4 w-[100%] flex flex-col">
       {/* Header */}
       <div className="flex justify-between items-center gap-2">
-        <p className="font-semibold text-[20px] leading-8 text-black-800">
+        <p className="font-semibold text-[20px] leading-8 text-black-800 text-name">
           {name}
         </p>
 
