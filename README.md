@@ -1,34 +1,173 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align='center'>
+ <img src='./assets/readmeimgs/heroimage.png'/>
+</div>
+
+# React Calender
+
+This is a low-level component for rendering monthly and weekly calendars using React.
+
+## Features
+
+- **Week View:** Display the calendar in a weekly format, showing individual days of the week horizontally. Each day have separate columns or sections to represent different time slots.
+
+- **Month View:** Display the calendar in a monthly format, showing all days of the month in a grid layout. Each day should provide a summary of the events scheduled for that day.
+
+- **Event Display:** Show events as blocks or markers within the calendar grid. In both week and month views, events should be visually distinguishable and displayed in their respective time slots.
+
+- **Event Details Modal:** When a user clicks on an event in the calendar, open a modal window displaying detailed information about the event. This should include the event title, description, start and end time, and any other relevant information.
+
+## Screenshots
+
+<img src='./assets/readmeimgs/desktopMonth.png' />
+
+<img src='./assets/readmeimgs/desktopWeek.png' />
+
+<img src='./assets/readmeimgs/tablet.png' />
+
+ <img src='./assets/readmeimgs/mobile.png' />
+
+## Tech Stack
+
+**Client:** Next, TailwindCSS
 
 ## Getting Started
 
-First, run the development server:
+Clone the project
 
 ```bash
-npm run dev
-# or
-yarn dev
+  git clone https://github.com/solguruz/react-calendar.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Go to the project directory
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+  cd react-calender
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Install dependencies
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+  npm install
+```
 
-## Learn More
+Start the server
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+  npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Usage/Examples
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```javascript
+import Calender from '../feature/Calender'
 
-## Deploy on Vercel
+const data = [
+  {
+    date: '05/01/2023',
+    task: [
+      {
+        startTime: '07:00 AM',
+        endTime: '8:00 AM',
+        title: 'Work Policy',
+      },
+      {
+        startTime: '8:00 Am',
+        endTime: '9:00 Am',
+        title: 'Work Name',
+      },
+    ],
+  },
+  {
+    date: '28/06/2023',
+    task: [
+      {
+        startTime: '7:00 Am',
+        endTime: '8:00 Am',
+        title: 'Work Policy',
+      },
+      {
+        startTime: '8:00 Am',
+        endTime: '9:00 Am',
+        title: 'Work Name',
+      },
+    ],
+  },
+];
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<!-- Month View -->
+const App = () => {
+  return <Calender name="Personal Calender" type="month" data={data} />;
+}
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<!-- Week View -->
+const App = () => {
+  return <Calender name="Personal Calender" type="week" data={data} />;
+}
+```
+
+## 🚀 About Us
+
+Engineering Quality Solutions by employing technologies with Passion and Love | Web and Mobile App Development Company in India and Canada
+
+## 🔗 Links
+
+<div align="left">
+<a href="https://solguruz.com/" target="_blank">
+<img src="./assets/readmeimgs/solguruz.svg" alt=solguruz style="margin-bottom: 5px;" />
+</a>
+<a href="https://www.facebook.com/SolGuruzHQ" target="_blank">
+<img src="./assets/readmeimgs/facebook.svg" alt=facebook style="margin-bottom: 5px;" />
+</a>
+
+<a href="https://www.linkedin.com/company/solguruz/" target="_blank">
+<img src="./assets/readmeimgs/linkedin.svg" alt=linkedin style="margin-bottom: 5px;" />
+</a>
+<a href="https://www.instagram.com/solguruz/" target="_blank">
+<img src="./assets/readmeimgs/instagram.svg" alt=instagram style="margin-bottom: 5px;" />
+</a>
+
+<a href="https://twitter.com/SolGuruz" target="_blank">
+<img src="./assets/readmeimgs/twitter.svg" alt=twitter style="margin-bottom: 5px;" />
+</a>
+<a href="https://www.behance.net/solguruz" target="_blank">
+<img src="./assets/readmeimgs/behance.svg" alt=behance style="margin-bottom: 5px;" />
+</a>
+<a href="https://dribbble.com/SolGuruz" target="_blank">
+<img src="./assets/readmeimgs/dribbble.svg" alt=dribbble style="margin-bottom: 5px;" />
+</a>
+
+</div>
+
+## Contributing
+
+Contributions are always welcome!
+
+See `contributing.md` for ways to get started.
+
+Please adhere to this project's `code of conduct`.
+
+## License
+
+```text
+MIT License
+
+Copyright (c) 2023 SolGuruz LLP
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
