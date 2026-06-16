@@ -11,7 +11,7 @@ import { Data } from '../../types';
 interface Props {
   name: string;
   type: string;
-  data: Data[];
+  events?: Data[];
   disabledDates?: string[];
 }
 
@@ -32,7 +32,7 @@ const months = [
 
 const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-const Calender = ({ name, type, data, disabledDates }: Props) => {
+const Calender = ({ name, type, events = [], disabledDates }: Props) => {
   const dateWeek = [];
   const [types, setType] = useState<string>('month');
   const [month, setMonth] = useState(new Date().getMonth());
@@ -213,13 +213,13 @@ const Calender = ({ name, type, data, disabledDates }: Props) => {
           year={year}
           months={months}
           daysOfWeek={daysOfWeek}
-          data={data}
+          events={events}
           disabledDates={disabledDates}
         />
       )}
 
       {(type === 'week' || (type === 'all' && types === 'week')) && (
-        <WeekView date={dateWeek} data={data} disabledDates={disabledDates} />
+        <WeekView date={dateWeek} events={events} disabledDates={disabledDates} />
       )}
     </div>
   );

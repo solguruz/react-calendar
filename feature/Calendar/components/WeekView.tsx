@@ -26,7 +26,7 @@ const hashColor = (key: string): string => {
 
 interface Props {
   date: string[];
-  data: Data[];
+  events?: Data[];
   disabledDates?: string[];
 }
 
@@ -57,7 +57,7 @@ const normalizeTime = (t: string) =>
 
 const todayFormatted = dayjs().format('DD/MM/YYYY');
 
-const WeekView = ({ date, data, disabledDates }: Props) => {
+const WeekView = ({ date, events = [], disabledDates }: Props) => {
   const [isShowCalenderPopup, setIsShowCalenderPopup] = useState(false);
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTask, setSelectedTask] = useState<WeekData | null>(null);
@@ -70,7 +70,7 @@ const WeekView = ({ date, data, disabledDates }: Props) => {
   const handleOpen = (d: string, t: string) => {
     const selectedDateString = dayjs(d).format('DD/MM/YYYY');
 
-    data.filter((item: Data) => {
+    events.filter((item: Data) => {
       if (item.date === selectedDateString) {
         item?.task.map((task: WeekData) => {
           if (normalizeTime(task.startTime) === t) {
@@ -190,7 +190,7 @@ const WeekView = ({ date, data, disabledDates }: Props) => {
                           >
                             {/* Event dots — only on non-disabled columns */}
                             {!isDisabled &&
-                              data.map((item: Data) => {
+                              events.map((item: Data) => {
                                 const formattedDate =
                                   dayjs(d).format('DD/MM/YYYY');
                                 const [selDate, selMonth, selYear] =

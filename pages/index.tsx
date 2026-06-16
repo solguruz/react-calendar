@@ -1,5 +1,5 @@
 import React from 'react';
-import Calender from '../feature/Calender';
+import Calendar from '../feature/Calendar';
 import { WeekData } from '../types';
 
 interface Data {
@@ -7,7 +7,7 @@ interface Data {
   task: WeekData[];
 }
 
-const data: Data[] = [
+const events: Data[] = [
   {
     date: '05/01/2026',
     task: [
@@ -75,10 +75,10 @@ const disabledDates = ['18/06/2026', '19/06/2026', '22/06/2026', '25/06/2026'];
 
 const Home = () => {
   return (
-    <Calender
-      name="Calender"
+    <Calendar
+      name="Calendar"
       type="week"
-      data={data}
+      events={events}
       disabledDates={disabledDates}
     />
   );

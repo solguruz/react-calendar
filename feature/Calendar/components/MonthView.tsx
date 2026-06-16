@@ -9,7 +9,7 @@ interface Props {
   year: number;
   daysOfWeek: string[];
   months: string[];
-  data: Data[];
+  events?: Data[];
   disabledDates?: string[];
 }
 
@@ -47,7 +47,7 @@ const MonthView = ({
   year,
   daysOfWeek,
   months,
-  data,
+  events = [],
   disabledDates,
 }: Props) => {
   const [isShowCalenderPopup, setIsShowCalenderPopup] = useState(false);
@@ -124,7 +124,7 @@ const MonthView = ({
 
               // Collect one entry per task for this day
               const dayTasks: { task: ITask; color: string }[] = [];
-              data.forEach((item) => {
+              events.forEach((item) => {
                 const d = item?.date.split('/')[0];
                 const cm = Number(item?.date.split('/')[1]);
                 const cy = Number(item?.date.split('/')[2]);

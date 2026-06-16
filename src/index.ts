@@ -1,2 +1,2 @@
-export { default as Calender } from '../feature/Calender';
+export { default as Calendar } from '../feature/Calendar';
 export type { Data, WeekData } from '../types';
