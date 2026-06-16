@@ -2,9 +2,9 @@
  <img src='./assets/readmeimgs/heroimage.png'/>
 </div>
 
-# React Calender
+# solguruz-react-calendar
 
-This is a low-level component for rendering monthly and weekly calendars using React.
+A lightweight, dark-mode-aware React calendar component with month and week views, color-coded events, and an event detail popup.
 
 ## Features
 
@@ -24,86 +24,185 @@ This is a low-level component for rendering monthly and weekly calendars using R
 
 <img src='./assets/readmeimgs/tablet.png' />
 
- <img src='./assets/readmeimgs/mobile.png' />
+<img src='./assets/readmeimgs/mobile.png' />
+
+## Installation
+
+```bash
+npm install solguruz-react-calendar dayjs
+```
+
+Then import the pre-built stylesheet once at your app's entry point:
+
+```tsx
+import 'solguruz-react-calendar/styles';
+```
+
+> **Tailwind users** — if your project already uses Tailwind, add the package to your `content` paths instead of importing the stylesheet:
+>
+> ```js
+> // tailwind.config.js
+> content: [
+>   // ...your existing paths
+>   './node_modules/solguruz-react-calendar/dist/**/*.{js,mjs}',
+> ];
+> ```
+
+## Quick Start
+
+```tsx
+import { Calender } from 'solguruz-react-calendar';
+import 'solguruz-react-calendar/styles';
+
+const events = [
+  {
+    date: '16/06/2026', // DD/MM/YYYY
+    task: [
+      { startTime: '09:00 AM', endTime: '10:00 AM', title: 'Team Standup' },
+      { startTime: '02:00 PM', endTime: '03:00 PM', title: 'Design Review' },
+    ],
+  },
+];
+
+export default function App() {
+  return <Calender name="My Calendar" type="month" data={events} />;
+}
+```
+
+## Props
+
+| Prop            | Type                         | Required | Description                                                                              |
+| --------------- | ---------------------------- | -------- | ---------------------------------------------------------------------------------------- |
+| `name`          | `string`                     | Yes      | Calendar title shown in the header                                                       |
+| `type`          | `"month" \| "week" \| "all"` | Yes      | View mode. `"all"` shows a Month/Week toggle                                             |
+| `data`          | `Data[]`                     | Yes      | Array of event objects (see types below)                                                 |
+| `disabledDates` | `string[]`                   | No       | Dates to disable in `DD/MM/YYYY` format. Disabled cells are non-clickable and grayed out |
+
+## Types
+
+```ts
+import type { Data, WeekData } from 'solguruz-react-calendar';
+
+interface Data {
+  date: string; // DD/MM/YYYY
+  task: {
+    startTime: string; // e.g. "09:00 AM"
+    endTime: string; // e.g. "10:00 AM"
+    title: string;
+  }[];
+}
+
+interface WeekData {
+  startTime: string;
+  endTime: string;
+  title: string;
+}
+```
+
+## Usage Examples
+
+**Month view**
+
+```tsx
+<Calender name="Team Calendar" type="month" data={events} />
+```
+
+**Week view**
+
+```tsx
+<Calender name="Team Calendar" type="week" data={events} />
+```
+
+**Both views with a toggle**
+
+```tsx
+<Calender name="Team Calendar" type="all" data={events} />
+```
+
+**With disabled dates**
+
+```tsx
+<Calender
+  name="Team Calendar"
+  type="month"
+  data={events}
+  disabledDates={['21/06/2026', '22/06/2026']}
+/>
+```
+
+## Dark Mode
+
+The calendar includes a built-in moon/sun toggle button in the header. No extra configuration is needed — it:
+
+1. Reads `localStorage` for a saved preference on mount
+2. Falls back to the OS `prefers-color-scheme` setting if no preference is saved
+3. Persists the choice to `localStorage` on every toggle
 
 ## Tech Stack
 
 **Client:** Next, TailwindCSS
 
-## Getting Started
+## Local Development
 
-Clone the project
-
-```bash
-  git clone https://github.com/solguruz/react-calendar.git
-```
-
-Go to the project directory
+Clone and install:
 
 ```bash
-  cd react-calender
+git clone https://github.com/solguruz/react-calendar.git
+cd react-calendar
+npm install
 ```
 
-Install dependencies
+Run the Next.js demo app:
 
 ```bash
-  npm install
+npm run dev
 ```
 
-Start the server
+Build the distributable library:
 
 ```bash
-  npm run dev
+npm run build:lib
 ```
 
-## Usage/Examples
+Create and inspect the npm tarball:
 
-```javascript
-import Calender from '../feature/Calender'
-
-const data = [
-  {
-    date: '05/01/2023',
-    task: [
-      {
-        startTime: '07:00 AM',
-        endTime: '8:00 AM',
-        title: 'Work Policy',
-      },
-      {
-        startTime: '8:00 Am',
-        endTime: '9:00 Am',
-        title: 'Work Name',
-      },
-    ],
-  },
-  {
-    date: '28/06/2023',
-    task: [
-      {
-        startTime: '7:00 Am',
-        endTime: '8:00 Am',
-        title: 'Work Policy',
-      },
-      {
-        startTime: '8:00 Am',
-        endTime: '9:00 Am',
-        title: 'Work Name',
-      },
-    ],
-  },
-];
-
-<!-- Month View -->
-const App = () => {
-  return <Calender name="Personal Calender" type="month" data={data} />;
-}
-
-<!-- Week View -->
-const App = () => {
-  return <Calender name="Personal Calender" type="week" data={data} />;
-}
+```bash
+npm run pack:lib
 ```
+
+## Testing Locally in Another Project
+
+**Option 1 — `npm link` (recommended during development)**
+
+```bash
+# in this repo
+npm link
+
+# in your consumer project
+npm link solguruz-react-calendar
+```
+
+After any change, re-run `npm run build:lib` — the consumer project picks up the update automatically.
+
+**Option 2 — install the tarball**
+
+```bash
+# in this repo
+npm run pack:lib
+
+# in your consumer project
+npm install /path/to/solguruz-react-calendar-0.1.0.tgz
+```
+
+## Scripts
+
+| Command             | Description                                        |
+| ------------------- | -------------------------------------------------- |
+| `npm run dev`       | Start the Next.js demo app                         |
+| `npm run build`     | Build the Next.js demo app                         |
+| `npm run lint`      | Run ESLint                                         |
+| `npm run build:lib` | Bundle the library (JS + CSS) into `dist/`         |
+| `npm run pack:lib`  | Build then create an npm tarball for local testing |
 
 ## 🚀 About Us
 
