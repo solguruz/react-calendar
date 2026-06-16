@@ -38,3 +38,7 @@ yarn.lock
 *.tsbuildinfo
 next-env.d.ts
 .vscode
+dist/
+*.tgz
+.next/
+node_modules/

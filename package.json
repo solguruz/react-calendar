@@ -1,20 +1,70 @@
 {
-  "name": "calender-components",
+  "name": "solguruz-react-calendar",
   "version": "0.1.0",
-  "private": true,
+  "description": "A lightweight dark-mode-aware React calendar component with month and week views",
+  "keywords": [
+    "react",
+    "calendar",
+    "dark-mode",
+    "tailwind",
+    "typescript"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solguruz/react-calendar.git"
+  },
+  "homepage": "https://github.com/solguruz/react-calendar#readme",
+  "bugs": {
+    "url": "https://github.com/solguruz/react-calendar/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./styles": {
+      "types": "./dist/styles.d.ts",
+      "default": "./dist/styles.css"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "styles": [
+        "./dist/styles.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install",
-    "export": "npm run build && next export -o _static"
+    "export": "npm run build && next export -o _static",
+    "build:lib": "tsup && tailwindcss -i ./src/lib.css -o ./dist/styles.css --minify --config tailwind.lib.config.js && node -e \"require('fs').writeFileSync('dist/styles.d.ts', 'export {};\\n')\"",
+    "pack:lib": "npm run build:lib && npm pack"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "peerDependencies": {
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
   },
   "dependencies": {
-    "dayjs": "^1.11.7",
-    "next": "13.3.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "dayjs": "^1.11.7"
   },
   "devDependencies": {
     "@types/node": "18.16.1",
@@ -27,9 +77,13 @@
     "eslint-config-next": "13.3.1",
     "husky": "^8.0.0",
     "lint-staged": "^13.2.2",
+    "next": "13.3.1",
     "postcss": "^8.4.23",
     "prettier": "^2.8.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "tailwindcss": "^3.3.2",
+    "tsup": "^8.5.1",
     "typescript": "5.0.4"
   },
   "lint-staged": {

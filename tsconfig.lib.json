@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "./dist",
+    "incremental": false,
+    "noEmit": false
+  },
+  "include": ["src", "feature", "assets", "types"],
+  "exclude": ["node_modules", "pages", "dist", "*.config.*"]
+}

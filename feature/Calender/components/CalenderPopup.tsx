@@ -1,68 +1,129 @@
 import React from 'react';
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import CloseIconGray from '../../../assets/CloseIconGray';
-import { Data, WeekData } from '../../../types';
+
+dayjs.extend(customParseFormat);
+
+interface ITask {
+  startTime: string;
+  endTime: string;
+  title: string;
+}
 
 interface Props {
   isShowPopup: boolean;
   handleCloseCalenderPopup: () => void;
   date: string;
-  data?: Data[];
-  weekData?: WeekData;
+  task: ITask;
+  color?: string;
 }
 
 const CalenderPopup = ({
   isShowPopup,
   handleCloseCalenderPopup,
   date,
-  data,
-  weekData,
+  task,
+  color = '#6366F1',
 }: Props) => {
-  const filteredData = data?.filter((item) => item.date === date) || [];
+  const displayDate = date
+    ? dayjs(date, 'DD/MM/YYYY').format('dddd, MMMM D, YYYY')
+    : '';
 
   return (
     <div
       className={`${
-        isShowPopup ? 'block' : 'hidden'
-      } fixed z-[49] scrollbar bg-white rounded-xl overflow-auto top-[50%] left-[50%] w-[300px] border border-border p-[10px]`}
-      style={{
-        transform: 'translate(-50%, -50%)',
-        boxShadow: '0px 15px 20px rgba(69, 69, 69, 0.17)',
-      }}
-      onClick={handleCloseCalenderPopup}
+        isShowPopup ? 'flex flex-col' : 'hidden'
+      } fixed z-[49] bg-white dark:bg-slate-800 rounded-2xl overflow-hidden top-[50%] left-[50%] w-[340px] border border-border-agent dark:border-slate-700`}
+      style={{ transform: 'translate(-50%, -50%)' }}
     >
-      <div className="flex justify-between items-center pb-[10px] border-b">
-        <p className="font-medium text-[16px] leading-5 text-[#5E6782]">
-          {date}
-        </p>
-        <CloseIconGray
-          className="cursor-pointer"
-          onClick={handleCloseCalenderPopup}
-        />
-      </div>
+      {/* Color accent bar matches the event dot */}
+      <div className="h-1.5 w-full" style={{ backgroundColor: color }} />
 
-      {filteredData?.length ? (
-        <div className="flex flex-col gap-2 mb-[15px] mt-3">
-          {filteredData[0]?.task.map(
-            (
-              task: { startTime: string; endTime: string; title: string },
-              index: number,
-            ) => (
-              <p
-                key={index}
-                className="py-1 px-2 bg-primary-50 text-blue-login font-medium text-[12px] leading-5 rounded"
-              >
-                {task.startTime} - {task.endTime} - {task.title}
-              </p>
-            ),
-          )}
-        </div>
-      ) : (
-        <div className="flex flex-col gap-2 mb-[15px] mt-3">
-          <p className="py-1 px-2 bg-primary-50 text-blue-login font-medium text-[12px] leading-5 rounded">
-            {weekData?.startTime} - {weekData?.endTime} - {weekData?.title}
+      {/* Header */}
+      <div className="flex justify-between items-center px-5 pt-4 pb-3.5 border-b border-border-agent dark:border-slate-700">
+        <div className="flex items-center gap-2.5 min-w-0">
+          <div
+            className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+            style={{ backgroundColor: color }}
+          />
+          <p className="font-bold text-[15px] text-calender-text dark:text-slate-100 leading-snug truncate">
+            {task.title}
           </p>
         </div>
-      )}
+        <button
+          className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors flex-shrink-0 ml-3"
+          onClick={handleCloseCalenderPopup}
+        >
+          <CloseIconGray className="w-4 h-4" />
+        </button>
+      </div>
+
+      {/* Detail rows */}
+      <div className="px-5 py-4 flex flex-col gap-4">
+        {/* Date */}
+        <div className="flex items-start gap-3">
+          <div className="mt-0.5 flex-shrink-0 text-calender-inner-text dark:text-slate-400">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <rect
+                x="1.5"
+                y="2.5"
+                width="13"
+                height="12"
+                rx="1.5"
+                stroke="currentColor"
+                strokeWidth="1.4"
+              />
+              <path
+                d="M5 1.5V4M11 1.5V4M1.5 6.5h13"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+          <div>
+            <p className="text-[11px] font-semibold text-calender-inner-text dark:text-slate-400 uppercase tracking-wider">
+              Date
+            </p>
+            <p className="text-[13px] text-calender-text dark:text-slate-100 font-medium mt-0.5">
+              {displayDate}
+            </p>
+          </div>
+        </div>
+
+        {/* Time */}
+        <div className="flex items-start gap-3">
+          <div className="mt-0.5 flex-shrink-0 text-calender-inner-text dark:text-slate-400">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <circle
+                cx="8"
+                cy="8"
+                r="6.5"
+                stroke="currentColor"
+                strokeWidth="1.4"
+              />
+              <path
+                d="M8 4.5V8l2.5 2"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+          <div>
+            <p className="text-[11px] font-semibold text-calender-inner-text dark:text-slate-400 uppercase tracking-wider">
+              Time
+            </p>
+            <p className="text-[13px] text-calender-text dark:text-slate-100 font-medium mt-0.5">
+              {task.startTime} &ndash; {task.endTime}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="pb-1" />
     </div>
   );
 };

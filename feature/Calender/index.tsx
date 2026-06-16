@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import MonthView from './components/MonthView';
 import WeekView from './components/WeekView';
 import AngleLeft from '../../assets/AngleLeft';
 import AngleRight from '../../assets/AngleRight';
+import MoonIcon from '../../assets/MoonIcon';
+import SunIcon from '../../assets/SunIcon';
 import { Data } from '../../types';
 
 interface Props {
   name: string;
   type: string;
   data: Data[];
+  disabledDates?: string[];
 }
 
 const months = [
@@ -29,12 +32,41 @@ const months = [
 
 const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-const Calender = ({ name, type, data }: Props) => {
+const Calender = ({ name, type, data, disabledDates }: Props) => {
   const dateWeek = [];
-  // const [types, setType] = useState<string>('month');
+  const [types, setType] = useState<string>('month');
   const [month, setMonth] = useState(new Date().getMonth());
   const [year, setYear] = useState(new Date().getFullYear());
   const [currentWeek, setCurrentWeek] = useState(dayjs());
+  const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia(
+      '(prefers-color-scheme: dark)',
+    ).matches;
+    const shouldBeDark = stored === 'dark' || (!stored && prefersDark);
+    setIsDark(shouldBeDark);
+    if (shouldBeDark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const next = !isDark;
+    setIsDark(next);
+    if (next) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  };
 
   // Week View
   // eslint-disable-next-line
@@ -83,57 +115,97 @@ const Calender = ({ name, type, data }: Props) => {
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const firstDay = new Date(year, month, 1).getDay();
 
-  // const handleType = () => {
-  //   setType(types);
-  // };
+  const handleType = (newType: string) => {
+    setType(newType);
+  };
 
   return (
-    <div className="p-4 w-[100%] flex flex-col">
+    <div className="p-6 w-full flex flex-col">
       {/* Header */}
-      <div className="flex justify-between items-center gap-2">
-        <p className="font-semibold text-[20px] leading-8 text-black-800 text-name">
+      <div className="flex justify-between items-center gap-4 mb-2">
+        <p className="font-bold text-[22px] leading-8 text-black-800 dark:text-slate-100 text-name tracking-tight">
           {name}
         </p>
 
-        <div className="flex justify-end h-[50px] gap-[30px] w-[60%]">
-          {type === 'month' ? (
-            <button className="flex gap-2 px-2 rounded-xl items-center  border border-login-border py-3">
-              <AngleLeft onClick={handlePrev} />
-              {months[month]} {year}
-              <AngleRight onClick={handleNext} />
-            </button>
-          ) : (
-            <button className="flex gap-2 px-2 rounded-xl items-center  border border-login-border py-3">
-              <AngleLeft onClick={prevWeek} />
-              {dayjs(start).format('DD')} - {dayjs(end).format('DD')}
-              {dayjs(end).format('MMM')}
-              <AngleRight onClick={nextWeek} />
-            </button>
-          )}
-
-          {/* Menu Month And Week */}
-          {/* {type === 'all' && (
-            <div className="w-[50%] mb-2">
-              <div className="p-1 bg-border rounded-xl flex gap-1 mb-[30px]">
-                <button
-                  onClick={handleType}
-                  className={`w-[50%] rounded-lg hover:bg-white hover:text-[#383E4E] text-[#5E6782] font-medium text-[16px] leading-[25px] py-2`}
-                >
-                  Month
-                </button>
-                <button
-                  onClick={handleType}
-                  className={`w-[50%] rounded-lg  hover:bg-white hover:text-[#383E4E] text-[#5E6782] font-medium text-[16px] leading-[25px] py-2`}
-                >
-                  Week
-                </button>
+        <div className="flex items-center gap-3">
+          {/* Navigation pill */}
+          {type === 'month' || (type === 'all' && types === 'month') ? (
+            <div className="flex items-center bg-white dark:bg-slate-800 border border-login-border dark:border-slate-700 rounded-xl overflow-hidden">
+              <div className="flex items-center justify-center w-9 h-9 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer border-r border-login-border dark:border-slate-700">
+                <AngleLeft
+                  onClick={handlePrev}
+                  className="text-calender-text dark:text-slate-300"
+                />
+              </div>
+              <span className="font-semibold text-[14px] text-black-800 dark:text-slate-100 px-4 min-w-[148px] text-center select-none">
+                {months[month]} {year}
+              </span>
+              <div className="flex items-center justify-center w-9 h-9 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer border-l border-login-border dark:border-slate-700">
+                <AngleRight
+                  onClick={handleNext}
+                  className="text-calender-text dark:text-slate-300"
+                />
               </div>
             </div>
-          )} */}
+          ) : (
+            <div className="flex items-center bg-white dark:bg-slate-800 border border-login-border dark:border-slate-700 rounded-xl overflow-hidden">
+              <div className="flex items-center justify-center w-9 h-9 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer border-r border-login-border dark:border-slate-700">
+                <AngleLeft
+                  onClick={prevWeek}
+                  className="text-calender-text dark:text-slate-300"
+                />
+              </div>
+              <span className="font-semibold text-[14px] text-black-800 dark:text-slate-100 px-4 min-w-[148px] text-center select-none">
+                {dayjs(start).format('DD')} &ndash; {dayjs(end).format('DD')}{' '}
+                {dayjs(end).format('MMM YYYY')}
+              </span>
+              <div className="flex items-center justify-center w-9 h-9 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer border-l border-login-border dark:border-slate-700">
+                <AngleRight
+                  onClick={nextWeek}
+                  className="text-calender-text dark:text-slate-300"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* View toggle */}
+          {type === 'all' && (
+            <div className="flex bg-slate-100 dark:bg-slate-700 rounded-xl p-1 gap-0.5">
+              <button
+                onClick={() => handleType('month')}
+                className={`px-4 py-1.5 rounded-lg text-[14px] font-medium transition-all ${
+                  types === 'month'
+                    ? 'bg-white dark:bg-slate-600 text-blue-login'
+                    : 'text-calender-inner-text dark:text-slate-400 hover:text-calender-text dark:hover:text-slate-200'
+                }`}
+              >
+                Month
+              </button>
+              <button
+                onClick={() => handleType('week')}
+                className={`px-4 py-1.5 rounded-lg text-[14px] font-medium transition-all ${
+                  types === 'week'
+                    ? 'bg-white dark:bg-slate-600 text-blue-login'
+                    : 'text-calender-inner-text dark:text-slate-400 hover:text-calender-text dark:hover:text-slate-200'
+                }`}
+              >
+                Week
+              </button>
+            </div>
+          )}
+
+          {/* Dark / light toggle */}
+          <button
+            onClick={toggleTheme}
+            title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+            className="flex items-center justify-center w-9 h-9 bg-white dark:bg-slate-800 border border-login-border dark:border-slate-700 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors text-calender-inner-text dark:text-slate-400"
+          >
+            {mounted ? isDark ? <SunIcon /> : <MoonIcon /> : <MoonIcon />}
+          </button>
         </div>
       </div>
 
-      {type === 'month' && (
+      {(type === 'month' || (type === 'all' && types === 'month')) && (
         <MonthView
           daysInMonth={daysInMonth}
           firstDay={firstDay}
@@ -142,10 +214,13 @@ const Calender = ({ name, type, data }: Props) => {
           months={months}
           daysOfWeek={daysOfWeek}
           data={data}
+          disabledDates={disabledDates}
         />
       )}
 
-      {type === 'week' && <WeekView date={dateWeek} data={data} />}
+      {(type === 'week' || (type === 'all' && types === 'week')) && (
+        <WeekView date={dateWeek} data={data} disabledDates={disabledDates} />
+      )}
     </div>
   );
 };
