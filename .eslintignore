@@ -1,7 +1,0 @@
-**/node_modules/*
-**/out/*
-**/.next/*
-**/build/*
-**/_static/*
-tailwind.lib.config.js
-dist/**

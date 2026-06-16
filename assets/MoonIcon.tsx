@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MoonIcon = (
-  props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>,
+  props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>,
 ) => (
   <svg
     width="16"

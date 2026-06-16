@@ -8,7 +8,8 @@
     "emitDeclarationOnly": true,
     "outDir": "./dist",
     "incremental": false,
-    "noEmit": false
+    "noEmit": false,
+    "ignoreDeprecations": "6.0"
   },
   "include": ["src", "feature", "assets", "types"],
   "exclude": ["node_modules", "pages", "dist", "*.config.*"]

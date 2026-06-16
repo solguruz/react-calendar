@@ -219,7 +219,11 @@ const Calender = ({ name, type, events = [], disabledDates }: Props) => {
       )}
 
       {(type === 'week' || (type === 'all' && types === 'week')) && (
-        <WeekView date={dateWeek} events={events} disabledDates={disabledDates} />
+        <WeekView
+          date={dateWeek}
+          events={events}
+          disabledDates={disabledDates}
+        />
       )}
     </div>
   );
