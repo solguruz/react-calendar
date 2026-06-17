@@ -1,4 +1,4 @@
-export interface Data {
+export interface EventData {
   date: string;
   task: {
     startTime: string;
