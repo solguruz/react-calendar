@@ -1,5 +1,5 @@
 <div align='center'>
- <img src='https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/heroimage.png'/>
+ <img src='https://raw.githubusercontent.com/solguruz/react-calendar/master/assets/readmeimgs/heroimage.png'/>
 </div>
 
 # solguruz-react-calendar
@@ -24,13 +24,13 @@ A lightweight, dark-mode-aware React calendar component with month and week view
 
 ## Screenshots
 
-<img src='https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/desktopMonth.png' />
+<img src='https://raw.githubusercontent.com/solguruz/react-calendar/master/assets/readmeimgs/desktopMonth.png' />
 
-<img src='https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/desktopWeek.png' />
+<img src='https://raw.githubusercontent.com/solguruz/react-calendar/master/assets/readmeimgs/desktopWeek.png' />
 
-<img src='https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/tablet.png' />
+<img src='https://raw.githubusercontent.com/solguruz/react-calendar/master/assets/readmeimgs/tablet.png' />
 
-<img src='https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/mobile.png' />
+<img src='https://raw.githubusercontent.com/solguruz/react-calendar/master/assets/readmeimgs/mobile.png' />
 
 ## Installation
 
@@ -77,12 +77,13 @@ export default function App() {
 
 ## Props
 
-| Prop            | Type                         | Required | Description                                                                              |
-| --------------- | ---------------------------- | -------- | ---------------------------------------------------------------------------------------- |
-| `name`          | `string`                     | Yes      | Calendar title shown in the header                                                       |
-| `type`          | `"month" \| "week" \| "all"` | Yes      | View mode. `"all"` shows a Month/Week toggle                                             |
-| `events`        | `Data[]`                     | No       | Array of event objects (see types below). Defaults to `[]`                               |
-| `disabledDates` | `string[]`                   | No       | Dates to disable in `DD/MM/YYYY` format. Disabled cells are non-clickable and grayed out |
+| Prop                | Type                         | Required | Description                                                                                                                    |
+| ------------------- | ---------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `name`              | `string`                     | Yes      | Calendar title shown in the header                                                                                             |
+| `type`              | `"month" \| "week" \| "all"` | Yes      | View mode. `"all"` shows a Month/Week toggle                                                                                   |
+| `events`            | `Data[]`                     | No       | Array of event objects (see types below). Defaults to `[]`                                                                     |
+| `disabledDates`     | `string[]`                   | No       | Dates to disable in `DD/MM/YYYY` format. Disabled cells are non-clickable and grayed out                                       |
+| `enableThemeToggle` | `boolean`                    | No       | Opt-in dark/light mode. When `true`, shows the sun/moon toggle and remembers the choice. When omitted/`false`, stays light. Defaults to `false` |
 
 ## Types
 
@@ -133,6 +134,7 @@ interface WeekData {
   type="month"
   events={events}
   disabledDates={['21/06/2026', '22/06/2026']}
+  enableThemeToggle={false}
 />
 ```
 
@@ -219,27 +221,27 @@ Engineering Quality Solutions by employing technologies with Passion and Love | 
 
 <div align="left">
 <a href="https://solguruz.com/" target="_blank">
-<img src="https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/solguruz.svg" alt=solguruz style="margin-bottom: 5px;" />
+<img src="https://raw.githubusercontent.com/solguruz/react-calendar/master/assets/readmeimgs/solguruz.svg" alt=solguruz style="margin-bottom: 5px;" />
 </a>
 <a href="https://www.facebook.com/SolGuruzHQ" target="_blank">
-<img src="https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/facebook.svg" alt=facebook style="margin-bottom: 5px;" />
+<img src="https://raw.githubusercontent.com/solguruz/react-calendar/master/assets/readmeimgs/facebook.svg" alt=facebook style="margin-bottom: 5px;" />
 </a>
 
 <a href="https://www.linkedin.com/company/solguruz/" target="_blank">
-<img src="https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/linkedin.svg" alt=linkedin style="margin-bottom: 5px;" />
+<img src="https://raw.githubusercontent.com/solguruz/react-calendar/master/assets/readmeimgs/linkedin.svg" alt=linkedin style="margin-bottom: 5px;" />
 </a>
 <a href="https://www.instagram.com/solguruz/" target="_blank">
-<img src="https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/instagram.svg" alt=instagram style="margin-bottom: 5px;" />
+<img src="https://raw.githubusercontent.com/solguruz/react-calendar/master/assets/readmeimgs/instagram.svg" alt=instagram style="margin-bottom: 5px;" />
 </a>
 
 <a href="https://twitter.com/SolGuruz" target="_blank">
-<img src="https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/twitter.svg" alt=twitter style="margin-bottom: 5px;" />
+<img src="https://raw.githubusercontent.com/solguruz/react-calendar/master/assets/readmeimgs/twitter.svg" alt=twitter style="margin-bottom: 5px;" />
 </a>
 <a href="https://www.behance.net/solguruz" target="_blank">
-<img src="https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/behance.svg" alt=behance style="margin-bottom: 5px;" />
+<img src="https://raw.githubusercontent.com/solguruz/react-calendar/master/assets/readmeimgs/behance.svg" alt=behance style="margin-bottom: 5px;" />
 </a>
 <a href="https://dribbble.com/SolGuruz" target="_blank">
-<img src="https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/dribbble.svg" alt=dribbble style="margin-bottom: 5px;" />
+<img src="https://raw.githubusercontent.com/solguruz/react-calendar/master/assets/readmeimgs/dribbble.svg" alt=dribbble style="margin-bottom: 5px;" />
 </a>
 
 </div>
