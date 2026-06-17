@@ -6,12 +6,12 @@ import AngleLeft from '../../assets/AngleLeft';
 import AngleRight from '../../assets/AngleRight';
 import MoonIcon from '../../assets/MoonIcon';
 import SunIcon from '../../assets/SunIcon';
-import { Data } from '../../types';
+import { EventData } from '../../types';
 
 interface Props {
   name: string;
   type: string;
-  events?: Data[];
+  events?: EventData[];
   disabledDates?: string[];
 }
 
@@ -131,40 +131,48 @@ const Calender = ({ name, type, events = [], disabledDates }: Props) => {
           {/* Navigation pill */}
           {type === 'month' || (type === 'all' && types === 'month') ? (
             <div className="flex items-center bg-white dark:bg-slate-800 border border-login-border dark:border-slate-700 rounded-xl overflow-hidden">
-              <div className="flex items-center justify-center w-9 h-9 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer border-r border-login-border dark:border-slate-700">
-                <AngleLeft
-                  onClick={handlePrev}
-                  className="text-calender-text dark:text-slate-300"
-                />
-              </div>
+              <button
+                type="button"
+                onClick={handlePrev}
+                aria-label="Previous month"
+                className="flex items-center justify-center w-9 h-9 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer border-r border-login-border dark:border-slate-700"
+              >
+                <AngleLeft className="text-calender-text dark:text-slate-300" />
+              </button>
               <span className="font-semibold text-[14px] text-black-800 dark:text-slate-100 px-4 min-w-[148px] text-center select-none">
                 {months[month]} {year}
               </span>
-              <div className="flex items-center justify-center w-9 h-9 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer border-l border-login-border dark:border-slate-700">
-                <AngleRight
-                  onClick={handleNext}
-                  className="text-calender-text dark:text-slate-300"
-                />
-              </div>
+              <button
+                type="button"
+                onClick={handleNext}
+                aria-label="Next month"
+                className="flex items-center justify-center w-9 h-9 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer border-l border-login-border dark:border-slate-700"
+              >
+                <AngleRight className="text-calender-text dark:text-slate-300" />
+              </button>
             </div>
           ) : (
             <div className="flex items-center bg-white dark:bg-slate-800 border border-login-border dark:border-slate-700 rounded-xl overflow-hidden">
-              <div className="flex items-center justify-center w-9 h-9 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer border-r border-login-border dark:border-slate-700">
-                <AngleLeft
-                  onClick={prevWeek}
-                  className="text-calender-text dark:text-slate-300"
-                />
-              </div>
+              <button
+                type="button"
+                onClick={prevWeek}
+                aria-label="Previous week"
+                className="flex items-center justify-center w-9 h-9 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer border-r border-login-border dark:border-slate-700"
+              >
+                <AngleLeft className="text-calender-text dark:text-slate-300" />
+              </button>
               <span className="font-semibold text-[14px] text-black-800 dark:text-slate-100 px-4 min-w-[148px] text-center select-none">
                 {dayjs(start).format('DD')} &ndash; {dayjs(end).format('DD')}{' '}
                 {dayjs(end).format('MMM YYYY')}
               </span>
-              <div className="flex items-center justify-center w-9 h-9 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer border-l border-login-border dark:border-slate-700">
-                <AngleRight
-                  onClick={nextWeek}
-                  className="text-calender-text dark:text-slate-300"
-                />
-              </div>
+              <button
+                type="button"
+                onClick={nextWeek}
+                aria-label="Next week"
+                className="flex items-center justify-center w-9 h-9 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer border-l border-login-border dark:border-slate-700"
+              >
+                <AngleRight className="text-calender-text dark:text-slate-300" />
+              </button>
             </div>
           )}
 

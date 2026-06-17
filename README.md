@@ -1,5 +1,5 @@
 <div align='center'>
- <img src='./assets/readmeimgs/heroimage.png'/>
+ <img src='https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/heroimage.png'/>
 </div>
 
 # solguruz-react-calendar
@@ -24,13 +24,13 @@ A lightweight, dark-mode-aware React calendar component with month and week view
 
 ## Screenshots
 
-<img src='./assets/readmeimgs/desktopMonth.png' />
+<img src='https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/desktopMonth.png' />
 
-<img src='./assets/readmeimgs/desktopWeek.png' />
+<img src='https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/desktopWeek.png' />
 
-<img src='./assets/readmeimgs/tablet.png' />
+<img src='https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/tablet.png' />
 
-<img src='./assets/readmeimgs/mobile.png' />
+<img src='https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/mobile.png' />
 
 ## Installation
 
@@ -219,27 +219,27 @@ Engineering Quality Solutions by employing technologies with Passion and Love | 
 
 <div align="left">
 <a href="https://solguruz.com/" target="_blank">
-<img src="./assets/readmeimgs/solguruz.svg" alt=solguruz style="margin-bottom: 5px;" />
+<img src="https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/solguruz.svg" alt=solguruz style="margin-bottom: 5px;" />
 </a>
 <a href="https://www.facebook.com/SolGuruzHQ" target="_blank">
-<img src="./assets/readmeimgs/facebook.svg" alt=facebook style="margin-bottom: 5px;" />
+<img src="https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/facebook.svg" alt=facebook style="margin-bottom: 5px;" />
 </a>
 
 <a href="https://www.linkedin.com/company/solguruz/" target="_blank">
-<img src="./assets/readmeimgs/linkedin.svg" alt=linkedin style="margin-bottom: 5px;" />
+<img src="https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/linkedin.svg" alt=linkedin style="margin-bottom: 5px;" />
 </a>
 <a href="https://www.instagram.com/solguruz/" target="_blank">
-<img src="./assets/readmeimgs/instagram.svg" alt=instagram style="margin-bottom: 5px;" />
+<img src="https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/instagram.svg" alt=instagram style="margin-bottom: 5px;" />
 </a>
 
 <a href="https://twitter.com/SolGuruz" target="_blank">
-<img src="./assets/readmeimgs/twitter.svg" alt=twitter style="margin-bottom: 5px;" />
+<img src="https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/twitter.svg" alt=twitter style="margin-bottom: 5px;" />
 </a>
 <a href="https://www.behance.net/solguruz" target="_blank">
-<img src="./assets/readmeimgs/behance.svg" alt=behance style="margin-bottom: 5px;" />
+<img src="https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/behance.svg" alt=behance style="margin-bottom: 5px;" />
 </a>
 <a href="https://dribbble.com/SolGuruz" target="_blank">
-<img src="./assets/readmeimgs/dribbble.svg" alt=dribbble style="margin-bottom: 5px;" />
+<img src="https://raw.githubusercontent.com/solguruz/react-calendar/develop/assets/readmeimgs/dribbble.svg" alt=dribbble style="margin-bottom: 5px;" />
 </a>
 
 </div>
@@ -254,7 +254,7 @@ Contributions are always welcome! Open an issue or pull request on the
 ```text
 MIT License
 
-Copyright (c) 2023 SolGuruz LLP
+Copyright (c) 2026 SolGuruz Pvt. Ltd.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CalenderPopup from './CalenderPopup';
-import { Data } from '../../../types';
+import { EventData } from '../../../types';
 
 interface Props {
   daysInMonth: number;
@@ -9,7 +9,7 @@ interface Props {
   year: number;
   daysOfWeek: string[];
   months: string[];
-  events?: Data[];
+  events?: EventData[];
   disabledDates?: string[];
 }
 

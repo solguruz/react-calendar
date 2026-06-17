@@ -1,13 +1,8 @@
 import React from 'react';
 import Calendar from '../feature/Calendar';
-import { WeekData } from '../types';
+import { EventData } from '../types';
 
-interface Data {
-  date: string;
-  task: WeekData[];
-}
-
-const events: Data[] = [
+const events: EventData[] = [
   {
     date: '05/01/2026',
     task: [

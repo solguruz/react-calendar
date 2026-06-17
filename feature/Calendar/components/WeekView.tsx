@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
 import CalenderPopup from './CalenderPopup';
-import { Data, WeekData } from '../../../types';
+import { EventData, WeekData } from '../../../types';
 
 const EVENT_COLORS = [
   '#6366F1',
@@ -26,7 +26,7 @@ const hashColor = (key: string): string => {
 
 interface Props {
   date: string[];
-  events?: Data[];
+  events?: EventData[];
   disabledDates?: string[];
 }
 
@@ -70,7 +70,7 @@ const WeekView = ({ date, events = [], disabledDates }: Props) => {
   const handleOpen = (d: string, t: string) => {
     const selectedDateString = dayjs(d).format('DD/MM/YYYY');
 
-    events.filter((item: Data) => {
+    events?.filter((item: EventData) => {
       if (item.date === selectedDateString) {
         item?.task.map((task: WeekData) => {
           if (normalizeTime(task.startTime) === t) {
@@ -190,7 +190,7 @@ const WeekView = ({ date, events = [], disabledDates }: Props) => {
                           >
                             {/* Event dots — only on non-disabled columns */}
                             {!isDisabled &&
-                              events.map((item: Data) => {
+                              events?.map((item: EventData) => {
                                 const formattedDate =
                                   dayjs(d).format('DD/MM/YYYY');
                                 const [selDate, selMonth, selYear] =
