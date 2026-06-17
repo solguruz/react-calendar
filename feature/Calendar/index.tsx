@@ -13,6 +13,7 @@ interface Props {
   type: string;
   events?: EventData[];
   disabledDates?: string[];
+  enableThemeToggle?: boolean;
 }
 
 const months = [
@@ -32,7 +33,13 @@ const months = [
 
 const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-const Calender = ({ name, type, events = [], disabledDates }: Props) => {
+const Calender = ({
+  name,
+  type,
+  events = [],
+  disabledDates,
+  enableThemeToggle = false,
+}: Props) => {
   const dateWeek = [];
   const [types, setType] = useState<string>('month');
   const [month, setMonth] = useState(new Date().getMonth());
@@ -43,6 +50,14 @@ const Calender = ({ name, type, events = [], disabledDates }: Props) => {
 
   useEffect(() => {
     setMounted(true);
+
+    // Theme switching is opt-in: without the prop the calendar stays light.
+    if (!enableThemeToggle) {
+      setIsDark(false);
+      document.documentElement.classList.remove('dark');
+      return;
+    }
+
     const stored = localStorage.getItem('theme');
     const prefersDark = window.matchMedia(
       '(prefers-color-scheme: dark)',
@@ -54,7 +69,7 @@ const Calender = ({ name, type, events = [], disabledDates }: Props) => {
     } else {
       document.documentElement.classList.remove('dark');
     }
-  }, []);
+  }, [enableThemeToggle]);
 
   const toggleTheme = () => {
     const next = !isDark;
@@ -123,7 +138,7 @@ const Calender = ({ name, type, events = [], disabledDates }: Props) => {
     <div className="p-6 w-full flex flex-col">
       {/* Header */}
       <div className="flex justify-between items-center gap-4 mb-2">
-        <p className="font-bold text-[22px] leading-8 text-black-800 text-name tracking-tight">
+        <p className="font-bold text-[22px] leading-8 text-inherit text-name tracking-tight">
           {name}
         </p>
 
@@ -202,14 +217,16 @@ const Calender = ({ name, type, events = [], disabledDates }: Props) => {
             </div>
           )}
 
-          {/* Dark / light toggle */}
-          <button
-            onClick={toggleTheme}
-            title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-            className="flex items-center justify-center w-9 h-9 bg-white dark:bg-slate-800 border border-login-border dark:border-slate-700 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors text-calender-inner-text dark:text-slate-400"
-          >
-            {mounted ? isDark ? <SunIcon /> : <MoonIcon /> : <MoonIcon />}
-          </button>
+          {/* Dark / light toggle (opt-in via enableThemeToggle) */}
+          {enableThemeToggle && (
+            <button
+              onClick={toggleTheme}
+              title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              className="flex items-center justify-center w-9 h-9 bg-white dark:bg-slate-800 border border-login-border dark:border-slate-700 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors text-calender-inner-text dark:text-slate-400"
+            >
+              {mounted ? isDark ? <SunIcon /> : <MoonIcon /> : <MoonIcon />}
+            </button>
+          )}
         </div>
       </div>
 
