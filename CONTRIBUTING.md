@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for your interest in contributing to **solguruz-react-calendar**! This guide covers our Git workflow and contribution standards.
+Thanks for your interest in contributing to **solguruz-calendar**! This guide covers our Git workflow and contribution standards.
 
 ## Git Workflow & Contribution Guidelines
 

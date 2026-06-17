@@ -2,11 +2,11 @@
  <img src='https://raw.githubusercontent.com/solguruz/react-calendar/master/assets/readmeimgs/heroimage.png'/>
 </div>
 
-# solguruz-react-calendar
+# solguruz-calendar
 
-[![npm version](https://img.shields.io/npm/v/solguruz-react-calendar.svg)](https://www.npmjs.com/package/solguruz-react-calendar)
-[![npm downloads](https://img.shields.io/npm/dm/solguruz-react-calendar.svg)](https://www.npmjs.com/package/solguruz-react-calendar)
-[![license](https://img.shields.io/npm/l/solguruz-react-calendar.svg)](./LICENSE)
+[![npm version](https://img.shields.io/npm/v/solguruz-calendar.svg)](https://www.npmjs.com/package/solguruz-calendar)
+[![npm downloads](https://img.shields.io/npm/dm/solguruz-calendar.svg)](https://www.npmjs.com/package/solguruz-calendar)
+[![license](https://img.shields.io/npm/l/solguruz-calendar.svg)](./LICENSE)
 
 A lightweight, dark-mode-aware React calendar component with month and week views, color-coded events, and an event detail popup.
 
@@ -35,13 +35,13 @@ A lightweight, dark-mode-aware React calendar component with month and week view
 ## Installation
 
 ```bash
-npm install solguruz-react-calendar
+npm install solguruz-calendar
 ```
 
 Then import the pre-built stylesheet once at your app's entry point:
 
 ```tsx
-import 'solguruz-react-calendar/styles';
+import 'solguruz-calendar/styles';
 ```
 
 > **Tailwind users** — if your project already uses Tailwind, add the package to your `content` paths instead of importing the stylesheet:
@@ -50,15 +50,15 @@ import 'solguruz-react-calendar/styles';
 > // tailwind.config.js
 > content: [
 >   // ...your existing paths
->   './node_modules/solguruz-react-calendar/dist/**/*.{js,mjs}',
+>   './node_modules/solguruz-calendar/dist/**/*.{js,mjs}',
 > ];
 > ```
 
 ## Quick Start
 
 ```tsx
-import { Calendar } from 'solguruz-react-calendar';
-import 'solguruz-react-calendar/styles';
+import { Calendar } from 'solguruz-calendar';
+import 'solguruz-calendar/styles';
 
 const events = [
   {
@@ -88,7 +88,7 @@ export default function App() {
 ## Types
 
 ```ts
-import type { Data, WeekData } from 'solguruz-react-calendar';
+import type { Data, WeekData } from 'solguruz-calendar';
 
 interface Data {
   date: string; // DD/MM/YYYY
@@ -188,7 +188,7 @@ npm run pack:lib
 npm link
 
 # in your consumer project
-npm link solguruz-react-calendar
+npm link solguruz-calendar
 ```
 
 After any change, re-run `npm run build:lib` — the consumer project picks up the update automatically.
@@ -200,7 +200,7 @@ After any change, re-run `npm run build:lib` — the consumer project picks up t
 npm run pack:lib
 
 # in your consumer project
-npm install /path/to/solguruz-react-calendar-0.1.0.tgz
+npm install /path/to/solguruz-calendar-0.1.0.tgz
 ```
 
 ## Scripts

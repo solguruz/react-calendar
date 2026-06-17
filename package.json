@@ -1,6 +1,6 @@
 {
-  "name": "solguruz-react-calendar",
-  "version": "0.1.1",
+  "name": "solguruz-calendar",
+  "version": "0.1.0",
   "description": "A lightweight dark-mode-aware React calendar component with month and week views",
   "keywords": [
     "react",
