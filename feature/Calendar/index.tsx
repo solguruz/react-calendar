@@ -175,7 +175,7 @@ const Calender = ({ name, type, events = [], disabledDates }: Props) => {
                 onClick={() => handleType('month')}
                 className={`px-4 py-1.5 rounded-lg text-[14px] font-medium transition-all ${
                   types === 'month'
-                    ? 'bg-white dark:bg-slate-600 text-blue-login'
+                    ? 'bg-white dark:bg-slate-600 text-blue-login dark:text-indigo-300'
                     : 'text-calender-inner-text dark:text-slate-400 hover:text-calender-text dark:hover:text-slate-200'
                 }`}
               >
@@ -185,7 +185,7 @@ const Calender = ({ name, type, events = [], disabledDates }: Props) => {
                 onClick={() => handleType('week')}
                 className={`px-4 py-1.5 rounded-lg text-[14px] font-medium transition-all ${
                   types === 'week'
-                    ? 'bg-white dark:bg-slate-600 text-blue-login'
+                    ? 'bg-white dark:bg-slate-600 text-blue-login dark:text-indigo-300'
                     : 'text-calender-inner-text dark:text-slate-400 hover:text-calender-text dark:hover:text-slate-200'
                 }`}
               >

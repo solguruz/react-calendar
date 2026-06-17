@@ -4,7 +4,13 @@
 
 # solguruz-react-calendar
 
+[![npm version](https://img.shields.io/npm/v/solguruz-react-calendar.svg)](https://www.npmjs.com/package/solguruz-react-calendar)
+[![npm downloads](https://img.shields.io/npm/dm/solguruz-react-calendar.svg)](https://www.npmjs.com/package/solguruz-react-calendar)
+[![license](https://img.shields.io/npm/l/solguruz-react-calendar.svg)](./LICENSE)
+
 A lightweight, dark-mode-aware React calendar component with month and week views, color-coded events, and an event detail popup.
+
+> **Requirements:** React 18 or 19 (peer dependency) and [`dayjs`](https://day.js.org/).
 
 ## Features
 
@@ -51,7 +57,7 @@ import 'solguruz-react-calendar/styles';
 ## Quick Start
 
 ```tsx
-import { Calender } from 'solguruz-react-calendar';
+import { Calendar } from 'solguruz-react-calendar';
 import 'solguruz-react-calendar/styles';
 
 const events = [
@@ -65,7 +71,7 @@ const events = [
 ];
 
 export default function App() {
-  return <Calender name="My Calendar" type="month" data={events} />;
+  return <Calendar name="My Calendar" type="month" events={events} />;
 }
 ```
 
@@ -75,7 +81,7 @@ export default function App() {
 | --------------- | ---------------------------- | -------- | ---------------------------------------------------------------------------------------- |
 | `name`          | `string`                     | Yes      | Calendar title shown in the header                                                       |
 | `type`          | `"month" \| "week" \| "all"` | Yes      | View mode. `"all"` shows a Month/Week toggle                                             |
-| `data`          | `Data[]`                     | Yes      | Array of event objects (see types below)                                                 |
+| `events`        | `Data[]`                     | No       | Array of event objects (see types below). Defaults to `[]`                               |
 | `disabledDates` | `string[]`                   | No       | Dates to disable in `DD/MM/YYYY` format. Disabled cells are non-clickable and grayed out |
 
 ## Types
@@ -104,28 +110,28 @@ interface WeekData {
 **Month view**
 
 ```tsx
-<Calender name="Team Calendar" type="month" data={events} />
+<Calendar name="Team Calendar" type="month" events={events} />
 ```
 
 **Week view**
 
 ```tsx
-<Calender name="Team Calendar" type="week" data={events} />
+<Calendar name="Team Calendar" type="week" events={events} />
 ```
 
 **Both views with a toggle**
 
 ```tsx
-<Calender name="Team Calendar" type="all" data={events} />
+<Calendar name="Team Calendar" type="all" events={events} />
 ```
 
 **With disabled dates**
 
 ```tsx
-<Calender
+<Calendar
   name="Team Calendar"
   type="month"
-  data={events}
+  events={events}
   disabledDates={['21/06/2026', '22/06/2026']}
 />
 ```
@@ -140,7 +146,8 @@ The calendar includes a built-in moon/sun toggle button in the header. No extra 
 
 ## Tech Stack
 
-**Client:** Next, TailwindCSS
+**Library:** React, TypeScript, Tailwind CSS (pre-compiled), dayjs
+**Demo app:** Next.js
 
 ## Local Development
 
@@ -239,11 +246,8 @@ Engineering Quality Solutions by employing technologies with Passion and Love | 
 
 ## Contributing
 
-Contributions are always welcome!
-
-See `contributing.md` for ways to get started.
-
-Please adhere to this project's `code of conduct`.
+Contributions are always welcome! Open an issue or pull request on the
+[GitHub repository](https://github.com/solguruz/react-calendar).
 
 ## License
 
