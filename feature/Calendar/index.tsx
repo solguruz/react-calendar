@@ -38,7 +38,7 @@ const Calender = ({
   type,
   events = [],
   disabledDates,
-  enableThemeToggle = true,
+  enableThemeToggle = false,
 }: Props) => {
   const dateWeek = [];
   const [types, setType] = useState<string>('month');
