@@ -123,7 +123,7 @@ const Calender = ({ name, type, events = [], disabledDates }: Props) => {
     <div className="p-6 w-full flex flex-col">
       {/* Header */}
       <div className="flex justify-between items-center gap-4 mb-2">
-        <p className="font-bold text-[22px] leading-8 text-black-800 dark:text-slate-100 text-name tracking-tight">
+        <p className="font-bold text-[22px] leading-8 text-black-800 text-name tracking-tight">
           {name}
         </p>
 

@@ -35,7 +35,7 @@ A lightweight, dark-mode-aware React calendar component with month and week view
 ## Installation
 
 ```bash
-npm install solguruz-react-calendar dayjs
+npm install solguruz-react-calendar
 ```
 
 Then import the pre-built stylesheet once at your app's entry point:
